@@ -997,7 +997,7 @@ ShaderResources Compiler::get_shader_resources(const unordered_set<VariableID> *
 		{
 			// There can only be one push constant block, but keep the vector in case this restriction is lifted
 			// in the future.
-			res.push_constant_buffers.push_back({ var.self, var.basetype, type.self, get_name(var.self) });
+			res.push_constant_buffers.push_back({ var.self, var.basetype, type.self, get_remapped_declared_block_name(var.self, ssbo_instance_name) });
 		}
 		else if (type.storage == StorageClassShaderRecordBufferKHR)
 		{
