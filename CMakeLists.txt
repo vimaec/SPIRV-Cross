@@ -69,7 +69,9 @@ if(${CMAKE_GENERATOR} MATCHES "Makefile")
 endif()
 
 # VIM customization - added this to fix compilation issue for dynamic library (inspired from CMakeLists.txt in FreeType library)
-add_compile_options($<$<COMPILE_LANGUAGE:CXX>:-fPIC>)
+if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+    add_compile_options($<$<COMPILE_LANGUAGE:CXX>:-fPIC>)
+endif()
 
 set(spirv-compiler-options "")
 set(spirv-compiler-defines "")
